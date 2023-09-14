@@ -40,4 +40,13 @@ public class UserService {
         }
         else return null;
     }
+
+    public String deleteUserById(int id){
+        Optional<User> optionalUser = userRepository.findById(id);
+        if(optionalUser.isPresent()){
+            userRepository.deleteById(id);
+            return "The user was deleted successfully";
+        }
+        else return "User id not found";
+    }
 }
